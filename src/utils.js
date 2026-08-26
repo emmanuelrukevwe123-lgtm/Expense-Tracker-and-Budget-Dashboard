@@ -1,0 +1,1 @@
+export const getUtils = () => {} // this function will provide utility functions for the application, such as formatting dates and currency

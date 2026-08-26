@@ -1,0 +1,1 @@
+export function store(){} // this function will handle the storage of the application state, including saving and retrieving transactions and budget

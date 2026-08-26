@@ -1,0 +1,1 @@
+export function getSummary(transactions) {} // this function will calculate the summary of the transactions
