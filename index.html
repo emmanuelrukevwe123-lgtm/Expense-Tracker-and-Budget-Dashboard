@@ -1,86 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Expense Tracker</title>
-</head>
-<body>
-<div id="app"></div>
-<h1>Expense Tracker</h1>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Expense Tracker</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <h1>Expense Tracker</h1>
 
-<!-- Summary -->
-<section aria-labelledby="summary-heading">
-  <h2 id="summary-heading">Summary</h2>
-  <dl>
-    <dt>Balance</dt>
-    <dd><output id="total-balance" aria-live="polite">$0.00</output></dd>
+    <!-- Summary -->
+    <section aria-labelledby="summary-heading">
+      <h2 id="summary-heading">Summary</h2>
+      <dl>
+        <dt>Balance</dt>
+        <dd><output id="total-balance" aria-live="polite">$0.00</output></dd>
 
-    <dt>Income</dt>
-    <dd><output id="total-income" aria-live="polite">$0.00</output></dd>
+        <dt>Income</dt>
+        <dd><output id="total-income" aria-live="polite">$0.00</output></dd>
 
-    <dt>Expenses</dt>
-    <dd><output id="total-expense" aria-live="polite">$0.00</output></dd>
-  </dl>
-</section>
+        <dt>Expenses</dt>
+        <dd><output id="total-expense" aria-live="polite">$0.00</output></dd>
+      </dl>
+    </section>
 
-<!-- Add transaction -->
-<section aria-labelledby="add-heading">
-  <h2 id="add-heading">Add a transaction</h2>
+    <!-- Add transaction -->
+    <section aria-labelledby="add-heading">
+      <h2 id="add-heading">Add a transaction</h2>
 
-  <form id="add-transaction">
-    <p>
-      <label for="description">Description</label>
-      <input type="text" id="description" name="description" required>
-    </p>
+      <form id="add-transaction">
+        <p>
+          <label for="description">Description</label>
+          <input type="text" id="description" name="description" required />
+        </p>
 
-    <p>
-      <label for="amount">Amount</label>
-      <input type="number" id="amount" name="amount" min="0.01" step="0.01" required>
-    </p>
+        <p>
+          <label for="amount">Amount</label>
+          <input
+            type="number"
+            id="amount"
+            name="amount"
+            min="0.01"
+            step="0.01"
+            required
+          />
+        </p>
 
-    <p>
-      <label for="date">Date</label>
-      <input type="date" id="date" name="date" required>
-    </p>
+        <p>
+          <label for="date">Date</label>
+          <input type="date" id="date" name="date" required />
+        </p>
 
-    <p>
-      <label for="type">Type</label>
-      <select id="type" name="type">
-        <option value="expense">Expense</option>
-        <option value="income">Income</option>
-      </select>
-    </p>
+        <p>
+          <label for="type">Type</label>
+          <select id="type" name="type">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+        </p>
 
-    <p>
-      <label for="category">Category</label>
-      <select id="category" name="category">
-        <option value="">Uncategorized</option>
-        <option value="groceries">Groceries</option>
-        <option value="rent">Rent</option>
-        <option value="transport">Transport</option>
-        <option value="salary">Salary</option>
-      </select>
-    </p>
+        <p>
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <option value="housing">Housing</option>
+            <option value="utilities">Utilities</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="income">Income</option>
+            <option value="miscellaneous">Miscellaneous</option>
+          </select>
+        </p>
 
-    <button type="submit">Add transaction</button>
-  </form>
-</section>
+        <button type="submit">Add transaction</button>
+      </form>
+    </section>
 
-<!-- Transactions -->
-<section aria-labelledby="transactions-heading">
-  <h2 id="transactions-heading">Transactions</h2>
-  <p id="transactions-empty">No transactions yet. Add your first one above.</p>
-  <ul id="transaction-list"></ul>
-</section>
+    <!-- Transactions -->
+    <section aria-labelledby="transactions-heading">
+      <h2 id="transactions-heading">Transactions</h2>
+      <p id="transactions-empty">
+        No transactions yet. Add your first one above.
+      </p>
+      <ul id="transaction-list"></ul>
+    </section>
 
-<!-- Category breakdown -->
-<section aria-labelledby="breakdown-heading">
-  <h2 id="breakdown-heading">Spending by category</h2>
-  <p id="breakdown-empty">Nothing to break down yet.</p>
-  <ul id="category-breakdown"></ul>
-</section>
+    <!-- Category breakdown -->
+    <section aria-labelledby="breakdown-heading">
+      <h2 id="breakdown-heading">Spending by category</h2>
+      <p id="breakdown-empty">Nothing to break down yet.</p>
+      <ul id="category-breakdown"></ul>
+    </section>
 
-<script type="module" src="./src/main.js"></script>
-</body>
+    <script type="module" src="./src/main.js"></script>
+  </body>
 </html>

@@ -25,7 +25,7 @@ export const render = (state) => {
         li.textContent = `${category}: ${total}` ;
         summaryBreakdown.appendChild(li);
     })
-}
+  }
 
 
 
