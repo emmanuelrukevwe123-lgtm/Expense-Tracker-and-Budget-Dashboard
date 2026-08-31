@@ -1,4 +1,4 @@
-import { getSummary } from "./calculations.js";
+import { getSummary, getCategoryTotals} from "./calculations.js";
 
 export const render = (state) => {
     const container = document.getElementById('transaction-list');
@@ -17,6 +17,14 @@ export const render = (state) => {
     balanceEl.textContent = summary.balance;
     incomeEl.textContent = summary.income;
     expenseEl.textContent = summary.expense;
+
+    const summaryBreakdown = document.getElementById('category-breakdown');
+    summaryBreakdown.replaceChildren();
+    Object.entries(getCategoryTotals(state.transactions)).forEach(([category, total]) => {
+        const li = document.createElement('li')
+        li.textContent = `${category}: ${total}` ;
+        summaryBreakdown.appendChild(li);
+    })
 }
 
 
