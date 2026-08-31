@@ -12,3 +12,11 @@ export const getSummary = (transactions) => {   // this gets the Summary of the 
     const balance = income - expense;
     return { income, expense, balance };
 }
+
+export const getCategoryTotals = (transactions) => {
+           return transactions.reduce((categoryTotals, transaction) => {
+            if (transaction.type === 'income') return categoryTotals;
+        const currentTotal = categoryTotals[transaction.category]  || 0;
+        return {...categoryTotals, [transaction.category]: currentTotal + transaction.amount }
+    },{});
+}
