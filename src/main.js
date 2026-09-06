@@ -13,7 +13,6 @@ form.addEventListener("submit", (event) => {
   const date = data.get("date");
   const type = data.get("type");
   const category = data.get("category");
-
   const newTransaction = {
     id: crypto.randomUUID(),
     label: description,
@@ -22,11 +21,23 @@ form.addEventListener("submit", (event) => {
     category: category,
     date: date,
   };
-
   currentState = {
     ...currentState,
     transactions: [...currentState.transactions, newTransaction],
   };
   render(currentState);
   form.reset();
+});
+
+const removeTransaction = document.getElementById("transaction-list");
+removeTransaction.addEventListener("click", (event) => {
+  const deleteTransaction = event.target.dataset.id;
+  if (!deleteTransaction) return;
+  currentState = {
+    ...currentState,
+    transactions: currentState.transactions.filter(
+      (transaction) => transaction.id !== deleteTransaction,
+    ),
+  };
+  render(currentState);
 });
