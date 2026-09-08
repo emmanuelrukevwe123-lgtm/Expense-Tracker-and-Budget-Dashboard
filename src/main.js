@@ -1,8 +1,9 @@
 import { render } from "./render.js";
 import { state } from "./state.js";
-import { store } from "./storage.js";
+import { loadState, saveState } from "./storage.js";
+import { makeId } from "./utils.js";
 
-let currentState = state;
+let currentState = loadState() || state;
 render(currentState);
 const form = document.getElementById("add-transaction");
 form.addEventListener("submit", (event) => {
@@ -14,7 +15,7 @@ form.addEventListener("submit", (event) => {
   const type = data.get("type");
   const category = data.get("category");
   const newTransaction = {
-    id: crypto.randomUUID(),
+    id: makeId(),
     label: description,
     amount: parseFloat(amount),
     type: type,
@@ -25,6 +26,7 @@ form.addEventListener("submit", (event) => {
     ...currentState,
     transactions: [...currentState.transactions, newTransaction],
   };
+  saveState(currentState);
   render(currentState);
   form.reset();
 });
@@ -40,4 +42,5 @@ removeTransaction.addEventListener("click", (event) => {
     ),
   };
   render(currentState);
+  saveState(currentState);
 });

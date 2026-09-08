@@ -1,4 +1,5 @@
 import { getSummary, getCategoryTotals } from "./calculations.js";
+import { formatCurrency } from "./utils.js";
 
 export const render = (state) => {
   const container = document.getElementById("transaction-list");
@@ -6,7 +7,7 @@ export const render = (state) => {
 
   state.transactions.forEach((transaction) => {
     const li = document.createElement("li");
-    li.textContent = `${transaction.label} - ${transaction.amount}`;
+    li.textContent = `${transaction.label} - ${formatCurrency(transaction.amount)}`;
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     container.appendChild(li);
@@ -18,16 +19,16 @@ export const render = (state) => {
   const incomeEl = document.getElementById("total-income");
   const expenseEl = document.getElementById("total-expense");
 
-  balanceEl.textContent = summary.balance;
-  incomeEl.textContent = summary.income;
-  expenseEl.textContent = summary.expense;
+  balanceEl.textContent = formatCurrency(summary.balance);
+  incomeEl.textContent = formatCurrency(summary.income);
+  expenseEl.textContent = formatCurrency(summary.expense);
 
   const summaryBreakdown = document.getElementById("category-breakdown");
   summaryBreakdown.replaceChildren();
   Object.entries(getCategoryTotals(state.transactions)).forEach(
     ([category, total]) => {
       const li = document.createElement("li");
-      li.textContent = `${category}: ${total}`;
+      li.textContent = `${category}: ${formatCurrency(total)}`;
       summaryBreakdown.appendChild(li);
     },
   );
