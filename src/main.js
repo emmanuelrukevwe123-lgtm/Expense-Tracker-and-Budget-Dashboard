@@ -2,6 +2,7 @@ import { render } from "./render.js";
 import { state } from "./state.js";
 import { loadState, saveState } from "./storage.js";
 import { makeId } from "./utils.js";
+import { getVisibleTransactions } from "./calculations.js";
 
 let currentState = loadState() || state;
 render(currentState);
@@ -41,6 +42,20 @@ removeTransaction.addEventListener("click", (event) => {
       (transaction) => transaction.id !== deleteTransaction,
     ),
   };
+  render(currentState);
+  saveState(currentState);
+});
+
+const filterSelect = document.getElementById("filter");
+filterSelect.addEventListener("change", (event) => {
+  currentState = { ...currentState, filter: event.target.value };
+  render(currentState);
+  saveState(currentState);
+});
+
+const sortSelect = document.getElementById("sort");
+sortSelect.addEventListener("change", (event) => {
+  currentState = { ...currentState, sort: event.target.value };
   render(currentState);
   saveState(currentState);
 });

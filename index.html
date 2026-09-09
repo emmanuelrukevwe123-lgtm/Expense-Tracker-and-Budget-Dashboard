@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Expense Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div id="app"></div>
     <h1>Expense Tracker</h1>
 
     <!-- Summary -->
@@ -73,7 +73,21 @@
         <button type="submit">Add transaction</button>
       </form>
     </section>
-
+    <!-- Filter & Sort -->
+    <section aria-labelledby="controls-heading">
+      <h2 id="controls-heading">view options</h2>
+      <label for="filter">filter</label>
+      <select id="filter">
+        <option value="all">All transactions</option>
+        <option value="income">Income Only</option>
+        <option value="expense">Expense Only</option>
+      </select>
+      <label for="sort">Sort</label>
+      <select id="sort">
+        <option value="date">by Date</option>
+        <option value="amount">by Amount</option>
+      </select>
+    </section>
     <!-- Transactions -->
     <section aria-labelledby="transactions-heading">
       <h2 id="transactions-heading">Transactions</h2>
